@@ -45,8 +45,9 @@ public class UniversityCLI {
 
     private char getUserChoice() {
         System.out.print("Enter your choice: ");
-        String choice = scanner.nextLine();
-        return choice.charAt(0);
+        char choice = scanner.next().charAt(0);
+        scanner.nextLine();
+        return choice;
     }
 
     private void runFacultyOperations() {
@@ -281,7 +282,7 @@ public class UniversityCLI {
         System.out.println("Select Study Field:");
         
         for (StudyField field : StudyField.values()) {
-            System.out.println(field.ordinal() +1 + ". " + field);
+            System.out.println(field.ordinal() + 1 + ". " + field);
         }
 
         int studyFieldChoice = scanner.nextInt();
