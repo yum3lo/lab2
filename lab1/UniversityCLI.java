@@ -2,6 +2,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 import university.*;
 
 public class UniversityCLI {
@@ -159,7 +162,7 @@ public class UniversityCLI {
         Faculty faculty = university.getFacultyByAbbreviation(facultyAbbreviation);
 
         if (faculty != null) {
-            List<Student> enrolledStudents = faculty.getStudents();
+            List<Student> enrolledStudents = faculty.getStudents().stream().filter(student -> !student.getIsGraduated()).collect(Collectors.toList());
 
             if (enrolledStudents.isEmpty()) {
                 System.out.println("There are no enrolled students in " + faculty.getName());
