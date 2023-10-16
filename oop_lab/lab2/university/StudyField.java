@@ -1,9 +1,0 @@
-package university;
-
-public enum StudyField {
-    MECHANICAL_ENGINEERING,
-    SOFTWARE_ENGINEERING,
-    FOOD_TECHNOLOGY,
-    URBANISM_ARCHITECHTURE,
-    VETERINARY_MEDICINE
-}
