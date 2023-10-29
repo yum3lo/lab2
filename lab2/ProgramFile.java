@@ -1,8 +1,9 @@
 package lab2;
 
 import java.io.*;
-class TextFile extends FileItem {
-    public TextFile(String name, String path) {
+
+class ProgramFile extends FileItem {
+    public ProgramFile(String name, String path) {
         super(name, path);
     }
 
@@ -20,31 +21,35 @@ class TextFile extends FileItem {
         }
     }
 
-    public int getWordCount() {
+    public int getClassCount() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(path));
-            int wordCount = 0;
+            int classCount = 0;
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] words = line.split("\\s+"); // Split on whitespace
-                wordCount += words.length;
+                if (line.trim().startsWith("class ")) {
+                    classCount++;
+                }
             }
             reader.close();
-            return wordCount;
+            return classCount;
         } catch (IOException e) {
             return -1; // Error
         }
     }
 
-    public int getCharacterCount() {
+    public int getMethodCount() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(path));
-            int charCount = 0;
-            while ((reader.read()) != -1) {
-                charCount++;
+            int methodCount = 0;
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.trim().startsWith("public") && line.trim().contains("(") && line.trim().endsWith(")")) {
+                    methodCount++;
+                }
             }
             reader.close();
-            return charCount;
+            return methodCount;
         } catch (IOException e) {
             return -1; // Error
         }
@@ -52,6 +57,6 @@ class TextFile extends FileItem {
 
     @Override
     public String getFileInfo() {
-        return super.getFileInfo() + "\nLine Count: " + getLineCount() + "\nWord Count: " + getWordCount() + "\nCharacter Count: " + getCharacterCount();
+        return super.getFileInfo() + "\nLine Count: " + getLineCount() + "\nClass Count: " + getClassCount() + "\nMethod Count: " + getMethodCount();
     }
 }
