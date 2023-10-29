@@ -1,16 +1,18 @@
-package lab2;
+package lab2.src;
 
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
-
 class ImageFile extends FileItem {
+    private String imageSize;
+
     public ImageFile(String name, String path) {
         super(name, path);
+        this.imageSize = fetchImageSize();
     }
 
-    public String getImageSize() {
+    private String fetchImageSize() {
         File file = new File(path);
         try {
             BufferedImage bufferedImage = ImageIO.read(file);
@@ -28,6 +30,11 @@ class ImageFile extends FileItem {
 
     @Override
     public String getFileInfo() {
-        return super.getFileInfo() + "\nImage Size: " + getImageSize();
+        String fileInfo = super.getFileInfo(); // Get common file info from the base class
+
+        // Add image-specific info
+        fileInfo += "\nImage Size: " + imageSize;
+
+        return fileInfo;
     }
 }
