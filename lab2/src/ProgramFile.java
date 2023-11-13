@@ -77,13 +77,13 @@ class ProgramFile extends FileItem {
 
     private boolean isClassLine(String line) {
         // Identifying class declarations in Java and Python
-        String pattern = "(class|def)\\s+\\w+\\s*\\(";
+        String pattern = "(class)\\s+\\w+\\s*\\(";
         return Pattern.compile(pattern).matcher(line).find();
     }
 
     private boolean isMethodLine(String line) {
         // Identifying method definitions in Java and Python
-        String pattern = "(public|private|protected)?\\s+(void|\\w+)\\s+\\w+\\s*\\(";
+        String pattern = "(public|private|protected|def)?\\s+(void|\\w+)\\s+\\w+\\s*\\(";
         return Pattern.compile(pattern).matcher(line).find();
     }
 
