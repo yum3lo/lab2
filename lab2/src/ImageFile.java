@@ -31,10 +31,7 @@ class ImageFile extends FileItem {
     @Override
     public String getFileInfo() {
         String fileInfo = super.getFileInfo(); // Get common file info from the base class
-
-        // Add image-specific info
         fileInfo += "\nImage Size: " + imageSize;
-
         return fileInfo;
     }
 }

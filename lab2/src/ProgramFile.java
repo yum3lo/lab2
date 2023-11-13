@@ -8,7 +8,7 @@ import java.util.regex.*;
 import java.util.Date;
 
 class ProgramFile extends FileItem {
-    private Date createdDate; // Define the createdDate field
+    private Date createdDate;
     private Date updatedDate;
 
     public ProgramFile(String name, String path) {
@@ -94,7 +94,7 @@ class ProgramFile extends FileItem {
 
         String fileInfo = "File name: " + name +
                 "\nFile extension: " + getFileExtension() +
-                "\nCreated Date: " + createdDateString; // Include only createdDate
+                "\nCreated Date: " + createdDateString;
 
         if (!createdDate.equals(updatedDate)) {
             String updatedDateString = sdf.format(updatedDate);
