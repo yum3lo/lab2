@@ -1,10 +1,11 @@
-public class ArrayUpStack implements Stack {
+public class ArrayUp implements Stack {
     private int[] array;
     private int top;
-    private static final int MAX_SIZE = 5;
+    private final int MAX_SIZE;
 
-    public ArrayUpStack() {
-        array = new int[MAX_SIZE];
+    public ArrayUp(int size) {
+        MAX_SIZE = size;    
+        array = new int[size];
         top = -1;
     }
 

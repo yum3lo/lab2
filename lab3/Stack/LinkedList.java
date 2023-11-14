@@ -1,6 +1,5 @@
-public class LinkedStack implements Stack {
+public class LinkedList implements Stack {
     private Node top;
-    private static final int MAX_SIZE = 5;
 
     private class Node {
         int data;
@@ -12,7 +11,7 @@ public class LinkedStack implements Stack {
         }
     }
 
-    public LinkedStack() {
+    public LinkedList() {
         top = null;
     }
 
