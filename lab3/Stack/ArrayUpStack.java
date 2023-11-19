@@ -1,39 +1,43 @@
-public class ArrayUp implements Stack {
+public class ArrayUpStack implements Stack {
     private int[] array;
     private int top;
-    private final int MAX_SIZE;
+    private final int MAX_SIZE = 5;
 
-    public ArrayUp(int size) {
-        MAX_SIZE = size;    
-        array = new int[size];
+    public ArrayUpStack(int MAX_SIZE) {    
+        array = new int[MAX_SIZE];
         top = -1;
     }
 
     @Override
     public void push(int element) {
-        if (isFull()) {
+        if (!isFull()) {
+            top++;
+            array[top] = element;
+        } else {
             System.out.println("Stack is full");
-            return;
         }
-        array[++top] = element;
     }
 
     @Override
     public int pop() {
-        if (isEmpty()) {
+        if (!isEmpty()) {
+            int poppedElement = array[top];
+            top--;
+            return poppedElement;
+        } else {
             System.out.println("Stack is empty");
             return -1;
-        }
-        return array[top--];
+        }        
     }
 
     @Override
     public int element() {
-        if (isEmpty()) {
+        if (!isEmpty()) {
+            return array[top];
+        } else {
             System.out.println("Stack is empty");
             return -1;
         }
-        return array[top];
     }
 
     @Override

@@ -1,4 +1,4 @@
-public class LinkedList implements Stack {
+public class LinkedStack implements Stack {
     private Node top;
 
     private class Node {
@@ -11,7 +11,7 @@ public class LinkedList implements Stack {
         }
     }
 
-    public LinkedList() {
+    public LinkedStack() {
         top = null;
     }
 
@@ -28,13 +28,14 @@ public class LinkedList implements Stack {
 
     @Override
     public int pop() {
-        if (isEmpty()) {
+        if (!isEmpty()) {
+            int poppedElement = top.data;
+            top = top.next;
+            return poppedElement;
+        } else {
             System.out.println("Stack is empty");
             return -1;
         }
-        int data = top.data;
-        top = top.next;
-        return data;
     }
 
     @Override
