@@ -8,7 +8,7 @@ import java.util.regex.*;
 import java.util.Date;
 
 class ProgramFile extends FileItem {
-    private Date createdDate; // Define the createdDate field
+    private Date createdDate;
     private Date updatedDate;
 
     public ProgramFile(String name, String path) {
@@ -77,13 +77,13 @@ class ProgramFile extends FileItem {
 
     private boolean isClassLine(String line) {
         // Identifying class declarations in Java and Python
-        String pattern = "(class|def)\\s+\\w+\\s*\\(";
+        String pattern = "(class)\\s+\\w+\\s*\\(";
         return Pattern.compile(pattern).matcher(line).find();
     }
 
     private boolean isMethodLine(String line) {
         // Identifying method definitions in Java and Python
-        String pattern = "(public|private|protected)?\\s+(void|\\w+)\\s+\\w+\\s*\\(";
+        String pattern = "(public|private|protected|def)?\\s+(void|\\w+)\\s+\\w+\\s*\\(";
         return Pattern.compile(pattern).matcher(line).find();
     }
 
@@ -94,7 +94,7 @@ class ProgramFile extends FileItem {
 
         String fileInfo = "File name: " + name +
                 "\nFile extension: " + getFileExtension() +
-                "\nCreated Date: " + createdDateString; // Include only createdDate
+                "\nCreated Date: " + createdDateString;
 
         if (!createdDate.equals(updatedDate)) {
             String updatedDateString = sdf.format(updatedDate);
