@@ -7,7 +7,7 @@ public class ArrayDownStack implements Stack {
 
     public ArrayDownStack(int MAX_SIZE) {
         array = new int[MAX_SIZE];
-        top = 4;
+        top = MAX_SIZE;
     }
 
     @Override
@@ -23,8 +23,9 @@ public class ArrayDownStack implements Stack {
     @Override
     public int pop() {
         if (!isEmpty()) {
+            int val = array[top];
             top++;
-            return array[top];
+            return val;
         } else {
             System.out.println("Stack is empty");
             return -1;
@@ -42,12 +43,12 @@ public class ArrayDownStack implements Stack {
 
     @Override
     public boolean isEmpty() {
-        return top == MAX_SIZE - 1;
+        return top == MAX_SIZE;
     }
 
     @Override
     public boolean isFull() {
-        return top == - 1;
+        return top == 0;
     }
 
     @Override
@@ -63,7 +64,7 @@ public class ArrayDownStack implements Stack {
 
     @Override
     public int getElementAt(int index) {
-        if (index < top || index >= MAX_SIZE) {
+        if (index >= MAX_SIZE) {
             throw new IndexOutOfBoundsException("Index out of bounds");
         }
         return array[index];

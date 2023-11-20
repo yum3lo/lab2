@@ -8,12 +8,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter max " + MAX_SIZE + " int values:");
-        int[] values = new int[MAX_SIZE];
-        for (int i = 0; i < MAX_SIZE; i++) {
-            values[i] = scanner.nextInt();
-        }
-
         Stack stack = null;
 
         System.out.println("Choose implementation (1:ArrayUpStack, 2:LinkedStack, 3:ArrayDownStack):");
@@ -34,14 +28,14 @@ public class Main {
                 scanner.close();
                 return;
         }
-        operateOnStack(stack, scanner, values);
+        operateOnStack(stack, scanner);
         scanner.close();
     }
 
-    public static void operateOnStack(Stack stack, Scanner scanner, int[] values) {
+    public static void operateOnStack(Stack stack, Scanner scanner) {
         // performs operations until the user exits
         while (true) {
-            System.out.println("Choose operation (1:push, 2:pop, 3:element, 4:isEmpty, 5:isFull, e:exit):");
+            System.out.println("Choose operation (1:push, 2:pop, 3:element, 4:isEmpty, 5:isFull, 6:printStack, e:exit):");
             String operation = scanner.next();
 
             switch (operation) {
@@ -51,16 +45,19 @@ public class Main {
                     stack.push(value);
                     break;
                 case "2":
-                    stack.pop();
+                    System.out.println(stack.pop());
                     break;
                 case "3":
-                    stack.element();
+                    System.out.println(stack.element());
                     break;
                 case "4":
-                    stack.isEmpty();
+                    System.out.println(stack.isEmpty());
                     break;
                 case "5":
-                    stack.isFull();
+                    System.out.println(stack.isFull());
+                    break;
+                case "6":
+                    printCurrentState(stack);
                     break;
                 case "e":
                     return;
