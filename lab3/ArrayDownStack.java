@@ -1,3 +1,5 @@
+package lab3;
+
 public class ArrayDownStack implements Stack {
     private int[] array;
     private int top;
@@ -46,5 +48,24 @@ public class ArrayDownStack implements Stack {
     @Override
     public boolean isFull() {
         return top == - 1;
+    }
+
+    @Override
+    public int size() {
+        int count = 0;
+        for (int i = MAX_SIZE - 1; i >= top; i--) {
+            if (array[i] != 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    @Override
+    public int getElementAt(int index) {
+        if (index < top || index >= MAX_SIZE) {
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+        return array[index];
     }
 }

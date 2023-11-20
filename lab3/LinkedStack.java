@@ -1,3 +1,5 @@
+package lab3;
+
 public class LinkedStack implements Stack {
     private Node top;
 
@@ -55,5 +57,36 @@ public class LinkedStack implements Stack {
     @Override
     public boolean isFull() {
         return false;
+    }
+
+    @Override
+    public int size() {
+        int count = 0;
+        Node current = top;
+        while (current != null) {
+            count++;
+            current = current.next;
+        }
+        return count;
+    }
+
+    @Override
+    public int getElementAt(int index) {
+        if (index < 0) {
+            throw new IndexOutOfBoundsException("Index cannot be negative");
+        }
+
+        int currentIndex = 0;
+        Node current = top;
+
+        while (current != null) {
+            if (currentIndex == index) {
+                return current.data;
+            }
+            currentIndex++;
+            current = current.next;
+        }
+
+        throw new IndexOutOfBoundsException("Index out of bounds");
     }
 }
